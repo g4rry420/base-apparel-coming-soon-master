@@ -1,9 +1,19 @@
 let email = document.getElementById("email");
 
-email.addEventListener("blur",errorCheck,false);
+email.addEventListener("keyup",errorCheck,false);
+
+
+pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/
+
 
 function errorCheck(){
-    if ((email.textContent = "") || (email.textContent = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)){
+    if (email.textContent = ""){
+        document.getElementById("error").style.display = "initial";
+        document.getElementById("span").style.display = "block";
+    } else if (pattern.test(email.value)){
+        document.getElementById("error").style.display = "none";
+        document.getElementById("span").style.display = "none";
+    }else{
         document.getElementById("error").style.display = "initial";
         document.getElementById("span").style.display = "block";
     }
